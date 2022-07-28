@@ -59,8 +59,8 @@ func calReg(regPointer *Reg) uint16 {
 }
 
 func (r Register) ShowReg() {
-	fmt.Println("===========当前cpu寄存器的状态============")
+	fmt.Println("===========当前cpu寄存器的状态==============================================================")
 	fmt.Printf("Ax=%#04x   Bx=%#04x   Cx=%#04x   Dx=%#04x  Sp=%#04x  Bp=%#04x  Si=%#04x  Di=%#04x\nDs=%#04x   Es=%#04x   Ss=%#04x   Cs=%#04x  Ip=%#04x\n",
 		calReg(&r.Ax), calReg(&r.Bx), calReg(&r.Cx), calReg(&r.Dx), calReg(&r.Sp), calReg(&r.Bp), r.Si, r.Di, calReg(&r.Ds), calReg(&r.Es), calReg(&r.Ss), calReg(&r.Cs), calReg(&r.Ip))
-	fmt.Println("=======================================")
+	fmt.Println("============================================================================================")
 }

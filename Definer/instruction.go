@@ -53,7 +53,7 @@ const (
 func Mov(src *SrcType, dst *DstType, code code) {
 	switch code {
 	case Mov_IMM2Reg:
-		//CR1(dst.IMM, src.Reg1)
+		CR1(src.IMM, dst.Reg1)
 		//CR2(dst.IMM, src.Reg2)
 	case Mov_MM2Reg:
 	case Mov_Reg2Reg:
