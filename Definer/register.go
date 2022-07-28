@@ -5,30 +5,30 @@ import "fmt"
 var CPU Register
 
 // 定义寄存器结构体
-type reg struct {
+type Reg struct {
 	Ah uint8
 	Al uint8
 }
 
 // si、di 寄存器不可分
 type Register struct {
-	Ax  reg    //累加寄存器
-	Bx  reg    //基地址寄存器
-	Cx  reg    //计数器寄存器
-	Dx  reg    //数据寄存器
+	Ax  Reg    //累加寄存器
+	Bx  Reg    //基地址寄存器
+	Cx  Reg    //计数器寄存器
+	Dx  Reg    //数据寄存器
 	Si  uint16 //源变址寄存器
 	Di  uint16 //源目标寄存器
-	Sp  reg    //栈顶寄存器
-	Bp  reg    //栈底寄存器
-	Ip  reg    //指令指针寄存器
-	Cs  reg    //代码段寄存器
-	Ss  reg    //栈段寄存器
-	Ds  reg    //数据段寄存器
-	Es  reg    //附加数据段寄存器
-	Psw reg    //标志寄存器
+	Sp  Reg    //栈顶寄存器
+	Bp  Reg    //栈底寄存器
+	Ip  Reg    //指令指针寄存器
+	Cs  Reg    //代码段寄存器
+	Ss  Reg    //栈段寄存器
+	Ds  Reg    //数据段寄存器
+	Es  Reg    //附加数据段寄存器
+	Psw Reg    //标志寄存器
 }
 
-func CR1(data uint16, regPointer *reg) {
+func CR1(data uint16, regPointer *Reg) {
 	regPointer.Al = uint8(data & 0xff)
 	regPointer.Ah = uint8(data >> 8 & 0xff)
 }
@@ -54,7 +54,7 @@ func InitReg() {
 	CR1(0, &CPU.Psw) //暂留异议
 }
 
-func calReg(regPointer *reg) uint16 {
+func calReg(regPointer *Reg) uint16 {
 	return uint16(regPointer.Ah)<<8 | uint16(regPointer.Al)
 }
 
